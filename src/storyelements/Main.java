@@ -20,12 +20,9 @@ public class Main {
         Kozlik.makeDream(Rat.getName());
         System.out.println(Kozlik.getNeck());
         System.out.println(Kozlik.getHp());
-        CombatInterface masterHit = new CombatInterface() {
-            @Override
-            public void damage(Creature opponent) {
-                opponent.applyDamage(Rat.getStrength()*2);
-                System.out.printf("%s is attacking X2!%n", Rat.getName());
-            }
+        CombatInterface masterHit = opponent -> {
+            opponent.applyDamage(Rat.getStrength()*2);
+            System.out.printf("%s is attacking X2!%n", Rat.getName());
         };
         masterHit.damage(Kozlik);
         System.out.println(Kozlik.getNeck());
